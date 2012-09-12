@@ -16,18 +16,6 @@ package org.exnebula.macify;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-import com.apple.eawt.AppEvent;
-
-import java.util.EventObject;
-
-public class QuitEventWrapper {
-  private final AppEvent.QuitEvent quitEvent;
-
-  public QuitEventWrapper(EventObject quitEvent) {
-    this.quitEvent = (AppEvent.QuitEvent)quitEvent;
-  }
-
-  public EventObject getEvent() {
-    return quitEvent;
-  }
+public interface AboutHandlerAdapter {
+  public void handleAbout(AboutEventWrapper aboutEventWrapper);
 }

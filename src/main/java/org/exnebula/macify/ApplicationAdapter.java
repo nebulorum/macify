@@ -16,10 +16,7 @@ package org.exnebula.macify;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-import com.apple.eawt.AppEvent;
-import com.apple.eawt.Application;
-import com.apple.eawt.QuitHandler;
-import com.apple.eawt.QuitResponse;
+import com.apple.eawt.*;
 
 public class ApplicationAdapter {
 
@@ -38,6 +35,24 @@ public class ApplicationAdapter {
       @Override
       public void handleQuitRequestWith(AppEvent.QuitEvent quitEvent, QuitResponse quitResponse) {
         quitHandler.handleQuitRequestWith(new QuitEventWrapper(quitEvent), new QuitResponseWrapper(quitResponse));
+      }
+    });
+  }
+
+  public void setAboutHandler(final AboutHandlerAdapter aboutHandler) {
+    application.setAboutHandler(new AboutHandler() {
+      @Override
+      public void handleAbout(AppEvent.AboutEvent aboutEvent) {
+        aboutHandler.handleAbout(new AboutEventWrapper(aboutEvent));
+      }
+    });
+  }
+
+  public void setPreferencesHandler(final PreferenceHandlerAdapter preferenceHandler) {
+    application.setPreferencesHandler(new PreferencesHandler() {
+      @Override
+      public void handlePreferences(AppEvent.PreferencesEvent preferencesEvent) {
+        preferenceHandler.handlePreferences(new PreferenceEventWrapper(preferencesEvent));
       }
     });
   }

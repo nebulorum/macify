@@ -29,7 +29,27 @@ public class TheApp extends JFrame {
     if (Macify.isMac()) {
       ApplicationAdapter app = ApplicationAdapter.getApplication();
       registerQuitHandler(app);
+      registerAboutHandler(app);
+      registerPreferenceHandler(app);
     }
+  }
+
+  private void registerAboutHandler(ApplicationAdapter app) {
+    app.setAboutHandler(new AboutHandlerAdapter() {
+      @Override
+      public void handleAbout(AboutEventWrapper aboutEventWrapper) {
+        JOptionPane.showMessageDialog(null, "So you want to know about me", "About", JOptionPane.INFORMATION_MESSAGE);
+      }
+    });
+  }
+
+  private void registerPreferenceHandler(ApplicationAdapter app) {
+    app.setPreferencesHandler(new PreferenceHandlerAdapter() {
+      @Override
+      public void handlePreferences(PreferenceEventWrapper preferenceEvent) {
+        JOptionPane.showMessageDialog(null, "What do you want?", "Preferences", JOptionPane.INFORMATION_MESSAGE);
+      }
+    });
   }
 
   private void registerQuitHandler(ApplicationAdapter app) {
@@ -39,7 +59,6 @@ public class TheApp extends JFrame {
       public void handleQuitRequestWith(QuitEventWrapper quitEvent, QuitResponseWrapper quitResponse) {
         int ret = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Warning",
             JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        System.out.println("Return " + ret);
         if (ret == JOptionPane.YES_OPTION)
           quitResponse.performQuit();
         else

@@ -20,14 +20,14 @@ import com.apple.eawt.AppEvent;
 
 import java.util.EventObject;
 
-public class QuitEventWrapper {
-  private final AppEvent.QuitEvent quitEvent;
+public class AboutEventWrapper {
+  private AppEvent.AboutEvent aboutEvent;
 
-  public QuitEventWrapper(EventObject quitEvent) {
-    this.quitEvent = (AppEvent.QuitEvent)quitEvent;
+  public AboutEventWrapper(EventObject aboutEvent) {
+    this.aboutEvent = (AppEvent.AboutEvent) aboutEvent;
   }
 
   public EventObject getEvent() {
-    return quitEvent;
+    return aboutEvent;
   }
 }

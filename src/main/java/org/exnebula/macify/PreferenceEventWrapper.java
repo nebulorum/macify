@@ -1,5 +1,4 @@
-package org.exnebula.macify;
-/*
+package org.exnebula.macify;/*
  * Copyright (C) 2012-2012 - Thomas Santana <tms@exnebula.org>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,14 +19,14 @@ import com.apple.eawt.AppEvent;
 
 import java.util.EventObject;
 
-public class QuitEventWrapper {
-  private final AppEvent.QuitEvent quitEvent;
+public class PreferenceEventWrapper {
+  private AppEvent.PreferencesEvent preferenceEvent;
 
-  public QuitEventWrapper(EventObject quitEvent) {
-    this.quitEvent = (AppEvent.QuitEvent)quitEvent;
+  public PreferenceEventWrapper(EventObject preferencesEvent) {
+    this.preferenceEvent = (AppEvent.PreferencesEvent) preferencesEvent;
   }
 
   public EventObject getEvent() {
-    return quitEvent;
+    return preferenceEvent;
   }
 }

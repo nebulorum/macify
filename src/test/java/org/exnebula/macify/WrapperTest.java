@@ -16,6 +16,7 @@ package org.exnebula.macify;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
+import com.apple.eawt.AppEvent;
 import com.apple.eawt.QuitResponse;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +26,7 @@ public class WrapperTest {
 
   @Test
   public void macIsTrue() {
-     assertTrue(Macify.isMac());
+    assertTrue(Macify.isMac());
   }
 
   @Test
@@ -44,5 +45,26 @@ public class WrapperTest {
 
     qrw.performQuit();
     verify(mockQuitResponse, times(1)).performQuit();
+  }
+
+  @Test
+  public void aboutEventWrapper() {
+    AppEvent.AboutEvent about = mock(AppEvent.AboutEvent.class);
+    new AboutEventWrapper(about).getEvent().getSource();
+    verify(about, times(1)).getSource();
+  }
+
+  @Test
+  public void quitEventWrapper() {
+    AppEvent.QuitEvent quit = mock(AppEvent.QuitEvent.class);
+    new QuitEventWrapper(quit).getEvent().getSource();
+    verify(quit, times(1)).getSource();
+  }
+
+  @Test
+  public void preferenceEventWrapper() {
+    AppEvent.PreferencesEvent quit = mock(AppEvent.PreferencesEvent.class);
+    new PreferenceEventWrapper(quit).getEvent().getSource();
+    verify(quit, times(1)).getSource();
   }
 }
