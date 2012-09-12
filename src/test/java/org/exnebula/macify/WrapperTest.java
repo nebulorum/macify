@@ -64,7 +64,7 @@ public class WrapperTest {
   @Test
   public void preferenceEventWrapper() {
     AppEvent.PreferencesEvent quit = mock(AppEvent.PreferencesEvent.class);
-    new PreferenceEventWrapper(quit).getEvent().getSource();
+    new PreferencesEventWrapper(quit).getEvent().getSource();
     verify(quit, times(1)).getSource();
   }
 }

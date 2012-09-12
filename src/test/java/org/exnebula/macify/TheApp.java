@@ -26,12 +26,22 @@ public class TheApp extends JFrame {
     setPreferredSize(new Dimension(300, 300));
     add(new JLabel("Check Mac preferences, about and close"));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    createMenuBar();
     if (Macify.isMac()) {
       ApplicationAdapter app = ApplicationAdapter.getApplication();
       registerQuitHandler(app);
       registerAboutHandler(app);
       registerPreferenceHandler(app);
     }
+  }
+
+  private void createMenuBar() {
+    JMenuBar menuBar = new JMenuBar();
+    JMenu menu = new JMenu("Some Menu");
+    JMenuItem item = new JMenuItem("Some Item");
+    menu.add(item);
+    menuBar.add(menu);
+    setJMenuBar(menuBar);
   }
 
   private void registerAboutHandler(ApplicationAdapter app) {
@@ -44,9 +54,9 @@ public class TheApp extends JFrame {
   }
 
   private void registerPreferenceHandler(ApplicationAdapter app) {
-    app.setPreferencesHandler(new PreferenceHandlerAdapter() {
+    app.setPreferencesHandler(new PreferencesHandlerAdapter() {
       @Override
-      public void handlePreferences(PreferenceEventWrapper preferenceEvent) {
+      public void handlePreferences(PreferencesEventWrapper preferenceEvent) {
         JOptionPane.showMessageDialog(null, "What do you want?", "Preferences", JOptionPane.INFORMATION_MESSAGE);
       }
     });
@@ -68,6 +78,7 @@ public class TheApp extends JFrame {
   }
 
   public static void main(String[] args) {
+    System.setProperty("apple.laf.useScreenMenuBar", "true");
     TheApp app = new TheApp();
     app.pack();
     app.setVisible(true);

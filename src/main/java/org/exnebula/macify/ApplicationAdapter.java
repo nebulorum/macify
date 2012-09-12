@@ -48,11 +48,11 @@ public class ApplicationAdapter {
     });
   }
 
-  public void setPreferencesHandler(final PreferenceHandlerAdapter preferenceHandler) {
+  public void setPreferencesHandler(final PreferencesHandlerAdapter preferenceHandler) {
     application.setPreferencesHandler(new PreferencesHandler() {
       @Override
       public void handlePreferences(AppEvent.PreferencesEvent preferencesEvent) {
-        preferenceHandler.handlePreferences(new PreferenceEventWrapper(preferencesEvent));
+        preferenceHandler.handlePreferences(new PreferencesEventWrapper(preferencesEvent));
       }
     });
   }

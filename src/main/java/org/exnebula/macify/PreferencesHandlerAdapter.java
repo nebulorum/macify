@@ -1,4 +1,5 @@
-package org.exnebula.macify;/*
+package org.exnebula.macify;
+/*
  * Copyright (C) 2012-2012 - Thomas Santana <tms@exnebula.org>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -15,18 +16,6 @@ package org.exnebula.macify;/*
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-import com.apple.eawt.AppEvent;
-
-import java.util.EventObject;
-
-public class PreferenceEventWrapper {
-  private AppEvent.PreferencesEvent preferenceEvent;
-
-  public PreferenceEventWrapper(EventObject preferencesEvent) {
-    this.preferenceEvent = (AppEvent.PreferencesEvent) preferencesEvent;
-  }
-
-  public EventObject getEvent() {
-    return preferenceEvent;
-  }
+public interface PreferencesHandlerAdapter {
+  public void handlePreferences(PreferencesEventWrapper preferencesEvent);
 }

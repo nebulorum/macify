@@ -16,6 +16,18 @@ package org.exnebula.macify;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-public interface PreferenceHandlerAdapter {
-  public void handlePreferences(PreferenceEventWrapper preferencesEvent);
+import com.apple.eawt.AppEvent;
+
+import java.util.EventObject;
+
+public class PreferencesEventWrapper {
+  private AppEvent.PreferencesEvent preferenceEvent;
+
+  public PreferencesEventWrapper(EventObject preferencesEvent) {
+    this.preferenceEvent = (AppEvent.PreferencesEvent) preferencesEvent;
+  }
+
+  public EventObject getEvent() {
+    return preferenceEvent;
+  }
 }
