@@ -8,6 +8,14 @@
     <artifactId>macify</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+    <distributionManagement>
+        <repository>
+            <id>exnebula</id>
+            <uniqueVersion>true</uniqueVersion>
+            <name>ExNebula.org</name>
+            <url>scp://petra.exnebula.org:222/var/repo</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -23,5 +31,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+            </extension>
+        </extensions>
+    </build>
 </project>
