@@ -32,7 +32,6 @@ public class ApplicationAdapter {
 
   public void setQuitHandler(final QuitHandlerAdapter quitHandler) {
     application.setQuitHandler(new QuitHandler() {
-      @Override
       public void handleQuitRequestWith(AppEvent.QuitEvent quitEvent, QuitResponse quitResponse) {
         quitHandler.handleQuitRequestWith(new QuitEventWrapper(quitEvent), new QuitResponseWrapper(quitResponse));
       }
@@ -41,7 +40,6 @@ public class ApplicationAdapter {
 
   public void setAboutHandler(final AboutHandlerAdapter aboutHandler) {
     application.setAboutHandler(new AboutHandler() {
-      @Override
       public void handleAbout(AppEvent.AboutEvent aboutEvent) {
         aboutHandler.handleAbout(new AboutEventWrapper(aboutEvent));
       }
@@ -50,7 +48,6 @@ public class ApplicationAdapter {
 
   public void setPreferencesHandler(final PreferencesHandlerAdapter preferenceHandler) {
     application.setPreferencesHandler(new PreferencesHandler() {
-      @Override
       public void handlePreferences(AppEvent.PreferencesEvent preferencesEvent) {
         preferenceHandler.handlePreferences(new PreferencesEventWrapper(preferencesEvent));
       }

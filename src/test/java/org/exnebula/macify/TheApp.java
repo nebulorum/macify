@@ -46,7 +46,6 @@ public class TheApp extends JFrame {
 
   private void registerAboutHandler(ApplicationAdapter app) {
     app.setAboutHandler(new AboutHandlerAdapter() {
-      @Override
       public void handleAbout(AboutEventWrapper aboutEventWrapper) {
         JOptionPane.showMessageDialog(null, "So you want to know about me", "About", JOptionPane.INFORMATION_MESSAGE);
       }
@@ -55,7 +54,6 @@ public class TheApp extends JFrame {
 
   private void registerPreferenceHandler(ApplicationAdapter app) {
     app.setPreferencesHandler(new PreferencesHandlerAdapter() {
-      @Override
       public void handlePreferences(PreferencesEventWrapper preferenceEvent) {
         JOptionPane.showMessageDialog(null, "What do you want?", "Preferences", JOptionPane.INFORMATION_MESSAGE);
       }
@@ -64,8 +62,6 @@ public class TheApp extends JFrame {
 
   private void registerQuitHandler(ApplicationAdapter app) {
     app.setQuitHandler(new QuitHandlerAdapter() {
-
-      @Override
       public void handleQuitRequestWith(QuitEventWrapper quitEvent, QuitResponseWrapper quitResponse) {
         int ret = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Warning",
             JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
